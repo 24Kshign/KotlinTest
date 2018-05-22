@@ -1,13 +1,21 @@
 package cn.share.kotlintest
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import cn.share.kotlintest.adapter.MainAdapter
 import cn.share.kotlintest.bean.MainBean
+import cn.share.kotlintest.util.FRStartActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : Activity() {
+
+    companion object {
+        fun start(context: Context) {
+            FRStartActivity.start(context, MainActivity::class.java)
+        }
+    }
 
     private lateinit var mAdapter: MainAdapter
 
@@ -17,7 +25,6 @@ class MainActivity : Activity() {
 
         mAdapter = MainAdapter(this)
         am_recyclerview.layoutManager = LinearLayoutManager(this)
-
         am_recyclerview.adapter = mAdapter
 
         initData()

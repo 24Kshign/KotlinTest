@@ -2,8 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="30dp">
 
+    <include
+        android:id="@+id/al_phone_input"
+        layout="@layout/layout_login_input" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <include
+        android:id="@+id/al_password_input"
+        layout="@layout/layout_login_input" />
+
+    <TextView
+        android:id="@+id/al_tv_login"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/main_bg_btn_4radius"
+        android:enabled="false"
+        android:text="登录"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="18dp" />
 
 </LinearLayout>

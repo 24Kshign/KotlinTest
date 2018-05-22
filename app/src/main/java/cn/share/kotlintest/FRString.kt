@@ -5,9 +5,7 @@ package cn.share.kotlintest
  */
 object FRString {
 
-    fun String?.isNullable(): Boolean {
-        return this == null || length == 0
-    }
+    fun String?.isNullable(): Boolean = this == null || length == 0
 
     fun Any?.string(): String {
         return this.toString()
