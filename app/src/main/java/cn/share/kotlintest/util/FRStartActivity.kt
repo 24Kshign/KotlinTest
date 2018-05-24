@@ -11,7 +11,7 @@ import android.os.Bundle
 
 object FRStartActivity {
 
-    val DEFAULT_FLAGS = 0
+    private const val DEFAULT_FLAGS = 0
 
     private fun newIntent(context: Context, cls: Class<out Activity>, bundle: Bundle?, flags: Int): Intent {
         val intent = Intent(context, cls)

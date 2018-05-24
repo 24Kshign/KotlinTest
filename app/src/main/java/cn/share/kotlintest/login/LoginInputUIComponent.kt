@@ -36,6 +36,10 @@ class LoginInputUIComponent : RelativeLayout {
         return lli_et_input.text.toString()
     }
 
+    fun setInputType(inputType:Int){
+        lli_et_input.inputType=inputType
+    }
+
     fun initDelete() {
         compositeDisposable.add(inputObservable.subscribe { charSequence ->
             lli_tv_delete.visibility = if (charSequence.toString().isNullable()) View.GONE else View.VISIBLE
