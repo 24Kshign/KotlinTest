@@ -41,25 +41,30 @@ class FRDialogViewHelper(view: View) {
     }
 
     fun setText(@IdRes idRes: Int, charSequence: CharSequence?) {
-        val textView: TextView? = getView(idRes)
-        if (charSequence.toString().isNullable()) {
+        if (!charSequence.toString().isNullable()) {
+            val textView: TextView? = getView(idRes)
+            textView?.visibility = View.VISIBLE
             textView?.text = charSequence
         }
     }
 
-    fun setTextColor(@IdRes idRes: Int, color: ColorStateList) {
-        val textView: TextView? = getView(idRes)
-        textView?.setTextColor(color)
+    fun setTextColor(@IdRes idRes: Int, color: ColorStateList?) {
+        if (null != color) {
+            val textView: TextView? = getView(idRes)
+            textView?.setTextColor(color)
+        }
     }
 
     fun setTextColor(@IdRes idRes: Int, @ColorInt color: Int) {
-        val textView: TextView? = getView(idRes)
-        textView?.setTextColor(color)
+        if (color != 0) {
+            val textView: TextView? = getView(idRes)
+            textView?.setTextColor(color)
+        }
     }
 
     fun setOnDialogClickListener(@IdRes idRes: Int, dialogClickListener: FRDialogClickListener?) {
-        val view: View? = getView(idRes)
         if (null != dialogClickListener) {
+            val view: View? = getView(idRes)
             view?.setOnClickListener {
                 val dismiss = dialogClickListener.onDialogClick(view)
                 if (dismiss) {

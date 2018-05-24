@@ -2,6 +2,7 @@ package cn.share.kotlintest.dialog
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.res.ColorStateList
 import android.support.annotation.IdRes
 import android.util.SparseArray
 import android.util.SparseIntArray
@@ -29,12 +30,13 @@ open class FRBaseDialogBuilder(context: Context, themeId: Int) {
     internal var mOnKeyListener: DialogInterface.OnKeyListener? = null
 
     //dialog布局上的文案
-    private var mTextArray = SparseArray<CharSequence>()
-    private var mTextColorArray = SparseIntArray()
+    internal var mTextArray = SparseArray<CharSequence>()
+    internal var mTextColorArray = SparseIntArray()
+    internal var mTextColorStateListArray = SparseArray<ColorStateList>()
 
     //dialog上控件的点击事件和EditText的输入监听事件
-    private var mClickListenerArray: SparseArray<FRDialogClickListener> = SparseArray()
-    private var mTextChangeListenerArray: SparseArray<FRDialogTextChangeListener> = SparseArray()
+    internal var mClickListenerArray: SparseArray<FRDialogClickListener> = SparseArray()
+    internal var mTextChangeListenerArray: SparseArray<FRDialogTextChangeListener> = SparseArray()
 
     private var mDialogViewHelper: FRDialogViewHelper? = null
     internal var mDialog: FRDialog? = null
@@ -111,6 +113,10 @@ open class FRBaseDialogBuilder(context: Context, themeId: Int) {
         return this
     }
 
+    open fun <VIEW : View> getView(@IdRes idRes: Int): VIEW? {
+        return mDialogViewHelper?.getView(idRes)
+    }
+
     fun create(): FRDialog {
         if (null == mDialog) {
             mDialog = FRDialog(mContext, mThemeId)
@@ -121,7 +127,7 @@ open class FRBaseDialogBuilder(context: Context, themeId: Int) {
         return mDialog as FRDialog
     }
 
-    protected fun attachView(): Boolean {
+    open fun attachView(): Boolean {
         for (i in 0 until mTextArray.size()) {
             mDialogViewHelper?.setText(mTextArray.keyAt(i), mTextArray.valueAt(i))
         }
@@ -130,6 +136,9 @@ open class FRBaseDialogBuilder(context: Context, themeId: Int) {
         }
         for (i in 0 until mTextColorArray.size()) {
             mDialogViewHelper?.setTextColor(mTextColorArray.keyAt(i), mTextColorArray.valueAt(i))
+        }
+        for (i in 0 until mTextColorStateListArray.size()) {
+            mDialogViewHelper?.setTextColor(mTextColorStateListArray.keyAt(i), mTextColorStateListArray.valueAt(i))
         }
         for (i in 0 until mTextChangeListenerArray.size()) {
             mDialogViewHelper?.addTextChangedListener(mTextChangeListenerArray.keyAt(i), mTextChangeListenerArray.valueAt(i))

@@ -9,7 +9,6 @@ import cn.share.kotlintest.MainActivity
 import cn.share.kotlintest.R
 import cn.share.kotlintest.dialog.FRDialog
 import cn.share.kotlintest.dialog.FRDialogClickListener
-import cn.share.kotlintest.util.FRToast
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.BiFunction
@@ -46,21 +45,31 @@ class LoginActivity : Activity() {
         })
 
         al_tv_login.setOnClickListener {
-            FRDialog.CommonBuilder(this)
-                    .setContentView(R.layout.dialog_login)
-                    .setCancelableOutside(false)
-                    .setOnClickListener(R.id.dl_tv_login, object : FRDialogClickListener {
+            //            FRDialog.CommonBuilder(this)
+//                    .setContentView(R.layout.dialog_login)
+//                    .setCancelableOutside(false)
+//                    .setOnClickListener(R.id.dl_tv_login, object : FRDialogClickListener {
+//                        override fun onDialogClick(view: View): Boolean {
+//                            MainActivity.start(this@LoginActivity)
+//                            return true
+//                        }
+//                    }).setOnClickListener(R.id.dl_tv_register, object : FRDialogClickListener {
+//                        override fun onDialogClick(view: View): Boolean {
+//                            FRToast.showToast("暂不支持注册")
+//                            return false
+//                        }
+//                    })
+//                    .show()
+            FRDialog.MaterialDesignBuilder(this)
+                    .setTitle("温馨提示")
+                    .setMessage("您即将要登录，是否继续？")
+                    .setNegativeContentAndListener("否", null)
+                    .setPositiveContentAndListener("是", object : FRDialogClickListener {
                         override fun onDialogClick(view: View): Boolean {
                             MainActivity.start(this@LoginActivity)
                             return true
                         }
-                    }).setOnClickListener(R.id.dl_tv_register, object : FRDialogClickListener {
-                        override fun onDialogClick(view: View): Boolean {
-                            FRToast.showToast("暂不支持注册")
-                            return false
-                        }
-                    })
-                    .show()
+                    }).show()
         }
     }
 }
