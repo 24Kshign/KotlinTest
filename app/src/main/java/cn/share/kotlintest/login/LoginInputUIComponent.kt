@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
-import cn.share.kotlintest.FRString.isNullable
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
@@ -23,7 +22,7 @@ class LoginInputUIComponent : RelativeLayout {
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     lateinit var inputObservable: Observable<CharSequence>
-    lateinit var compositeDisposable: CompositeDisposable
+    private lateinit var compositeDisposable: CompositeDisposable
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -36,13 +35,17 @@ class LoginInputUIComponent : RelativeLayout {
         return lli_et_input.text.toString()
     }
 
-    fun setInputType(inputType:Int){
-        lli_et_input.inputType=inputType
+    fun setInputType(inputType: Int) {
+        lli_et_input.inputType = inputType
+    }
+
+    fun setInput(charSequence: CharSequence) {
+        lli_et_input.setText(charSequence)
     }
 
     fun initDelete() {
         compositeDisposable.add(inputObservable.subscribe { charSequence ->
-            lli_tv_delete.visibility = if (charSequence.toString().isNullable()) View.GONE else View.VISIBLE
+            lli_tv_delete.visibility = if (charSequence.toString().isEmpty()) View.GONE else View.VISIBLE
         })
 
         lli_tv_delete.setOnClickListener { lli_et_input.setText("") }

@@ -3,7 +3,7 @@ package cn.share.kotlintest.adapter
 import android.content.Context
 import cn.share.kotlintest.R
 import cn.share.kotlintest.bean.MainBean
-import cn.share.kotlintest.dp
+import cn.share.kotlintest.px
 import cn.share.kotlintest.recyclerview.BaseRecyclerCommonAdapter
 import cn.share.kotlintest.recyclerview.BaseRecyclerCommonViewHolder
 import kotlinx.android.synthetic.main.item_main.view.*
@@ -21,7 +21,7 @@ class MainAdapterRecycler(context: Context) : BaseRecyclerCommonAdapter<MainBean
         if (null != data) {
             holder.setImageResource(holder.itemView.im_iv_avatar, data.image_res)
             holder.setText(holder.itemView.im_tv_title, data.title)
-            holder.setTextSize(holder.itemView.im_tv_title, 18.dp())
+            holder.setTextSize(holder.itemView.im_tv_title, 18.px())
         }
     }
 }

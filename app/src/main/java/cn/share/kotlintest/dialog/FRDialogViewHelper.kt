@@ -7,7 +7,6 @@ import android.util.SparseArray
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import cn.share.kotlintest.FRString.isNullable
 import java.lang.ref.WeakReference
 
 /**
@@ -41,7 +40,7 @@ class FRDialogViewHelper(view: View) {
     }
 
     fun setText(@IdRes idRes: Int, charSequence: CharSequence?) {
-        if (!charSequence.toString().isNullable()) {
+        if (!charSequence.toString().isEmpty()) {
             val textView: TextView? = getView(idRes)
             textView?.visibility = View.VISIBLE
             textView?.text = charSequence

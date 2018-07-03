@@ -10,8 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import cn.share.kotlintest.FRString.isNullable
 import cn.share.kotlintest.R
+import cn.share.kotlintest.isNullable
 
 
 /**

@@ -1,7 +1,7 @@
 package cn.share.kotlintest.util
 
 import android.widget.Toast
-import cn.share.kotlintest.App
+import cn.share.kotlintest.app.App
 
 /**
  * Created by jack on 2018/5/23

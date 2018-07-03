@@ -1,4 +1,4 @@
-package cn.share.kotlintest
+package cn.share.kotlintest.app
 
 import android.app.Application
 

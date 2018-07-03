@@ -25,9 +25,23 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/main_bg_btn_4radius"
         android:enabled="false"
-        android:text="登录"
         android:gravity="center"
+        android:text="登录"
         android:textColor="@android:color/white"
         android:textSize="18dp" />
+
+    <LinearLayout
+        android:id="@+id/al_ll_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp">
+
+        <View
+            android:layout_width="100dp"
+            android:background="@color/colorPrimary"
+            android:layout_height="20dp" />
+
+    </LinearLayout>
 
 </LinearLayout>
